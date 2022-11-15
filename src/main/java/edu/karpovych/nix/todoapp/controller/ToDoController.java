@@ -57,17 +57,17 @@ public class ToDoController {
         User user = userRepository.findByEmail(username);
         toDo.setUser(user);
         toDoService.saveToDo(toDo);
-        return "redirect:/todos";
+        return "todos";
     }
     @GetMapping("/deleteTodo/{id}")
     public String deleteTodo(@PathVariable(value = "id") UUID id) {
         toDoService.deleteToDo(id);
-        return "redirect:/todos";
+        return "todos";
     }
     @PostMapping("/set-status/{id}/")
     public String setStatus(@PathVariable(value = "id")UUID id,@RequestParam boolean status){
         toDoService.updateTodoStatus(id, status);
-        return "redirect:/todos";
+        return "todos";
     }
 
 }
